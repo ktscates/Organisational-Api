@@ -1,0 +1,52 @@
+{{#partial "content"}}
+
+    <h1>All Employees</h1>
+    <br>
+    <br>
+
+    <form action="/users" method="post" >
+        <div class="form-group">
+            <label>Employee Name</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Department Id</label>
+            <input type="number"  name="idDepartment" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Role</label>
+            <input type="text" name="role" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Position</label>
+            <input type="text" name="position" class="form-control" required>
+        </div>
+        <button type="submit" class="button btn-success">Submit</button>
+    </form>
+
+    <br>
+    <br>
+
+    <table class="table">
+        <tr>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Department Id</th>
+            <th scope="col">Role</th>
+            <th scope="col">Position</th>
+
+
+        </tr>
+        {{#each users}}
+            <tr>
+                <td>{{username}}</td>
+                <td>{{idDepartment}}</td>
+                <td>{{role}}</td>
+                <td>{{position}}</td>
+
+            </tr>
+        {{/each}}
+    </table>
+
+{{/partial}}
+
+{{>layout.hbs}}

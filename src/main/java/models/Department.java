@@ -1,6 +1,8 @@
 package models;
+import org.sql2o.*;
+import org.sql2o.Sql2oException;
 
-import java.util.Objects;
+import java.util.List;
 
 public class Department {
     private int id;
@@ -46,18 +48,24 @@ public class Department {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Department)) return false;
-        Department that = (Department) o;
-        return numberEmployees == that.numberEmployees &&
-                Objects.equals(nameOfDepartment, that.nameOfDepartment) &&
-                Objects.equals(detail, that.detail);
+    public void save(Department department) {
+        String sql = "INSERT INTO departs (nameofdepartment, detail, numberemployees) VALUES (:nameOfDepartment, :detail, :numberEmployees);";
+        try (Connection con = DB.sql2o.open()) {
+            int id = (int) con.createQuery(sql, true)
+                    .bind(department)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate()
+                    .getKey();
+            department.setId(id);
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nameOfDepartment, detail, numberEmployees);
+    public static List<Department> getAll(){
+        try(Connection con = DB.sql2o.open()){
+            return con.createQuery("SELECT * FROM departs")
+                    .executeAndFetch(Department.class);
+        }
     }
 }
