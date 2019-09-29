@@ -9,10 +9,20 @@
             <label>Employee Name</label>
             <input type="text" name="username" class="form-control" required>
         </div>
+
         <div class="form-group">
-            <label>Department Id</label>
-            <input type="number"  name="idDepartment" class="form-control" required>
+            <label for="idDepartment">Department Id</label>
+            <select id="idDepartment" name="idDepartment" class="form-control">
+                <option value="Choose a department">Choose a department...</option>
+                {{#if departments}}
+                    {{#each departments}}
+                        <option value="{{id}}">{{nameOfDepartment}}</option>
+                    {{/each}}
+                {{/if}}
+
+            </select>
         </div>
+
         <div class="form-group">
             <label>Role</label>
             <input type="text" name="role" class="form-control" required>

@@ -39,6 +39,8 @@ public class App {
 
         get("/users", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("departments", Department.getAll());
+            model.put("users", User.getAll());
             return new ModelAndView(model, "users.hbs");
         },new HandlebarsTemplateEngine());
 
