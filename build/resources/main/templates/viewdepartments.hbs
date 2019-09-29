@@ -2,26 +2,28 @@
 
     <h1>All Departments</h1>
     <h2>To add a department:
-        <a href="/view"> click here</a>
+        <a href="/"> click here</a>
     </h2>
     <br>
     <br>
     <table class="table">
+
         <tr>
             <th scope="col">Department Name</th>
             <th scope="col">Description</th>
             <th scope="col">Number of employees</th>
-
-
         </tr>
+
         {{#each departments}}
+
             <tr>
                 <td>{{nameOfDepartment}}</td>
                 <td>{{detail}}</td>
                 <td>{{numberEmployees}}</td>
-
             </tr>
+
         {{/each}}
+        
     </table>
 
 {{/partial}}

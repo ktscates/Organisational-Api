@@ -5,18 +5,41 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
 <!--    <link rel='stylesheet' href='/css/styles.css'>-->
+    <style>
+        body{
+           font-family: 'Grenze', serif;
+           background-image:url('https://cdn.mos.cms.futurecdn.net/8bEDm3gBzXCXZvP3KSboA6.jpg');
+           background-repeat:no-repeat;
+           background-attachment:fixed;
+           background-size:cover;
+           color:white;
+        }
+        form{
+           padding-top:30px;
+           margin: 0 auto;
+           width:50%;
+        }
+        label{
+           font-size:large;
+           font-weight:bolder;
+        }
+        a{
+           color:black;
+        }
 
+
+    </style>
 </head>
 <body>
 <div>
-    <ul class="nav nav-tabs nav justify-content-end">
-        <li role="presentation"><a href="/">Home</a></li>
-        <li role="presentation"><a href="/departments/new">Department</a></li>
-        <li role="presentation"><a href="/users">Employees</a></li>
+    <ul class="nav navbar-dark bg-primary nav-tabs nav justify-content-center">
+        <li><a href="/">Home</a></li>
+        <li><a href="/departments">Departments</a></li>
+        <li><a href="/users">Employees</a></li>
     </ul>
 
     <div class="container">
-        <div class="col-md-8 offset-md-2">
+        <div>
             {{#block "content"}}
             {{/block}}
 
