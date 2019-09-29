@@ -1,0 +1,41 @@
+{{#partial "content"}}
+
+    <br>
+    <br>
+    <h1 style="text-align:center; font-weight:bolder;">Write a Post</h1>
+    <hr>
+
+    <form action="/news" method="post">
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <input type="text" name="content" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="idDepartment">Department Id</label>
+            <select id="idDepartment" name="idDepartment" class="form-control">
+                <option value="Choose a department">Choose a department...</option>
+                {{#each departments}}
+                    <option value="{{id}}">{{nameOfDepartment}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="usernameId">Employee Name</label>
+            <select id="usernameId" name="usernameId" class="form-control">
+                <option value="Employee Name">Employee Name..</option>
+                {{#each users}}
+                    <option value="{{id}}">{{username}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+
+{{/partial}}
+
+{{>layout.hbs}}
