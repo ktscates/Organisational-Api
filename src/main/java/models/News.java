@@ -6,19 +6,13 @@ import java.util.List;
 public class News {
     private int id;
     private String content;
-    private String description;
+    private int usernameId;
     private int idDepartment;
 
-
-    public News(String content) {
-        this.content = content;
-        this.description = "General news";
-    }
-
-    public News(String content, int idDepartment) {
+    public News(String content, int idDepartment, int usernameId) {
         this.content = content;
         this.idDepartment = idDepartment;
-        this.description = "Department news";
+        this.usernameId = usernameId;
     }
 
     public int getIdDepartment() {
@@ -37,6 +31,14 @@ public class News {
         this.content = content;
     }
 
+    public int getUsernameId() {
+        return usernameId;
+    }
+
+    public void setUsernameId(int usernameId) {
+        this.usernameId = usernameId;
+    }
+
     public int getId() {
         return id;
     }
@@ -46,7 +48,7 @@ public class News {
     }
 
     public void save(News news) {
-        String sql = "INSERT INTO news (content, iddepartment) VALUES (:content, :idDepartment);";
+        String sql = "INSERT INTO news (content, iddepartment, usernameid) VALUES (:content, :idDepartment, :usernameId);";
         try (Connection con = DB.sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(news)

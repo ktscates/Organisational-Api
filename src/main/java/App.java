@@ -48,16 +48,17 @@ public class App {
             return new ModelAndView(model, "viewdepartments.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/userform", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("departments", Department.getAll());
+            return new ModelAndView(model, "userform.hbs");
+        },new HandlebarsTemplateEngine());
+
         get("/viewusers", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("departments", Department.getAll());
             model.put("users", User.getAll());
             return new ModelAndView(model, "viewusers.hbs");
-        },new HandlebarsTemplateEngine());
-
-        get("/userform", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "userform.hbs");
         },new HandlebarsTemplateEngine());
 
         post("/users", (request, response) -> {
@@ -73,20 +74,31 @@ public class App {
             return new ModelAndView(model, "viewusers.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/news", (request, response) -> {
+        get("/newsform", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "news.hbs");
+            model.put("departments", Department.getAll());
+            model.put("users", User.getAll());
+            return new ModelAndView(model, "newsform.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/viewnews", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("departments", Department.getAll());
+            model.put("users", User.getAll());
+            model.put("news", News.getAll());
+            return new ModelAndView(model, "viewnews.hbs");
         },new HandlebarsTemplateEngine());
 
         post("/news", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String content = request.queryParams("content");
             int idDepartment = Integer.parseInt(request.queryParams("idDepartment"));
-            News newNews = new News(content, idDepartment);
+            int usernameId = Integer.parseInt(request.queryParams("usernameId"));
+            News newNews = new News(content, idDepartment, usernameId);
             newNews.save(newNews);
             List<News> news = News.getAll();
             model.put("news", news);
-            return new ModelAndView(model, "news.hbs");
+            return new ModelAndView(model, "viewnews.hbs");
         }, new HandlebarsTemplateEngine());
 
     }
