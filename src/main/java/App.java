@@ -17,12 +17,23 @@ public class App {
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "welcome.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/welcome", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "departform.hbs");
         },new HandlebarsTemplateEngine());
 
         get("/departform", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "departform.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/viewdepartments", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("departments", Department.getAll());
+            return new ModelAndView(model, "viewdepartments.hbs");
         },new HandlebarsTemplateEngine());
 
         post("/departments", (request, response) -> {
@@ -37,11 +48,16 @@ public class App {
             return new ModelAndView(model, "viewdepartments.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/users", (request, response) -> {
+        get("/viewusers", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("departments", Department.getAll());
             model.put("users", User.getAll());
-            return new ModelAndView(model, "users.hbs");
+            return new ModelAndView(model, "viewusers.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/userform", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "userform.hbs");
         },new HandlebarsTemplateEngine());
 
         post("/users", (request, response) -> {
@@ -54,7 +70,7 @@ public class App {
             newUser.save(newUser);
             List<User> users = User.getAll();
             model.put("users", users);
-            return new ModelAndView(model, "users.hbs");
+            return new ModelAndView(model, "viewusers.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/news", (request, response) -> {
