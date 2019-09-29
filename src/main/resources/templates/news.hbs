@@ -1,6 +1,6 @@
 {{#partial "content"}}
 
-    <h1>All News</h1>
+    <h1 style="text-align:center;">Write a Post</h1>
     <br>
     <br>
 
@@ -21,19 +21,21 @@
     <br>
 
     <table class="table">
+
         <tr>
             <th scope="col">Content</th>
             <th scope="col">Department Id</th>
-
-
         </tr>
+
         {{#each news}}
+
             <tr>
                 <td>{{content}}</td>
                 <td>{{idDepartment}}</td>
-
             </tr>
+
         {{/each}}
+
     </table>
 
 {{/partial}}

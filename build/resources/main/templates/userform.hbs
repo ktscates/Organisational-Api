@@ -1,6 +1,6 @@
 {{#partial "content"}}
 
-    <h1>All Employees</h1>
+    <h1 style="text-align:center; ">Create a User</h1>
     <br>
     <br>
 
@@ -14,12 +14,9 @@
             <label for="idDepartment">Department Id</label>
             <select id="idDepartment" name="idDepartment" class="form-control">
                 <option value="Choose a department">Choose a department...</option>
-                {{#if departments}}
                     {{#each departments}}
                         <option value="{{id}}">{{nameOfDepartment}}</option>
                     {{/each}}
-                {{/if}}
-
             </select>
         </div>
 
@@ -27,11 +24,14 @@
             <label>Role</label>
             <input type="text" name="role" class="form-control" required>
         </div>
+
         <div class="form-group">
             <label>Position</label>
             <input type="text" name="position" class="form-control" required>
         </div>
+
         <button type="submit" class="button btn-success">Submit</button>
+
     </form>
 
     <br>
