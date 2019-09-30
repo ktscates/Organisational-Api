@@ -11,9 +11,14 @@ Organisational News Portal should be to provide news/articles/posts that are ava
 * Unzip the folder.
 * You should have all the project files.
 ## BDD
-
+In PSQL:
+* CREATE DATABASE news;
+* CREATE TABLE users (id serial PRIMARY KEY, username varchar, iddepartment int, role varchar, position varchar);
+* CREATE TABLE departs (id serial PRIMARY KEY, nameofdepartment varchar, detail varchar, numberemployees int);
+* CREATE TABLE news (id serial PRIMARY KEY, content varchar, iddepartment int, usernameid int)
 ## Known Bugs
 There no bugs in the application.
+Failed to deploy on heroku.
 ## Technologies Used
 * Java
 * Spark Java
