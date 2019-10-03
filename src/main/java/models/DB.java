@@ -13,14 +13,12 @@ public class DB {
         Logger logger = LoggerFactory.getLogger(DB.class);
 
         try {
-
-            dbUri = new URI(System.getenv("DATABASE_URL"));
-//            if (System.getenv("DATABASE_URL") == null) {
-//                dbUri = new URI("postgres://localhost:5432/news");
-//                logger.info("Using local database.");
-//            } else {
-//                dbUri = new URI(System.getenv("DATABASE_URL"));
-//            }
+            if (System.getenv("DATABASE_URL") == null) {
+                dbUri = new URI("postgres://localhost:5432/news");
+                logger.info("Using local database.");
+            } else {
+                dbUri = new URI(System.getenv("DATABASE_URL"));
+            }
 
             int port = dbUri.getPort();
             String host = dbUri.getHost();
