@@ -1,0 +1,1 @@
+web: ./build/install/organisational-news-portal/bin/organisational-news-portal
