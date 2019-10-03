@@ -18,10 +18,10 @@ In PSQL:
 * CREATE TABLE news (id serial PRIMARY KEY, content varchar, iddepartment int, usernameid int)
 ## Known Bugs
 There no bugs in the application.
-Failed to deploy on heroku.
 ## Technologies Used
 * Java
 * Spark Java
+* Heroku
 ## Support and contact details
 If you run into errors, please feel free to contact me on github.
 ### License
